@@ -6,6 +6,9 @@ import RawData from '../RawData_Movies.json'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link, useNavigate } from 'react-router-dom';
+import Content from './Content';
+import Footer from './Footer';
+import BookingWindow from './BookingWindow';
 
 function Arrow(props) {
     const { className, style, onClick } = props;
@@ -105,6 +108,8 @@ const Hero = () => {
                     </Slider>
                 </div>
             </section>
+            <Content />
+            <Footer />
         </>
     )
 }

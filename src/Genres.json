@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Action",
+        "color": "red"
+    },
+    
+    {
+        "id": 2,
+        "name": "Family",
+        "color": "orange"
+    },
+    {
+        "id": 3,
+        "name": "Horror",
+        "color": "yellow"
+    },
+    {
+        "id": 4,
+        "name": "Romance",
+        "color": "green"
+    }
+]

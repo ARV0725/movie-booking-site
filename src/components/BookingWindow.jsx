@@ -24,8 +24,14 @@ const BookingWindow = () => {
 
     const [seats, setSeats] = useState(generateSeats());
     const [selectedSeats, setSelectedSeats] = useState([{ row: '', seat: '' }]);
+    const [bookDate, setBookDate] = useState('');
 
     console.log(selectedSeats);
+
+    function seatRemover(selectedSeats, rowIndex, seatIndex) {
+        const newIndex = selectedSeats.findIndex(seat => seat.row === rowLabels[rowIndex] && seat.seat === seatIndex + 1); 
+        selectedSeats.splice(newIndex, 1);
+    }
 
     function handleSeatClick(rowIndex, seatIndex) {
         const newSeats = [...seats];
@@ -33,8 +39,10 @@ const BookingWindow = () => {
 
         if (seat.status === 'available') {
             seat.status = 'selected';
+            setSelectedSeats([...selectedSeats, { row: rowLabels[rowIndex], seat: seatIndex + 1 ,  status: seat.status }]);
         } else if (seat.status === 'selected') {
             seat.status = 'available';
+            seatRemover(selectedSeats, rowIndex, seatIndex);
         }
 
         setSeats(newSeats);
@@ -65,7 +73,7 @@ const BookingWindow = () => {
                         <div className="booking-panel-left">
                             <div className="booking-date">
                                 {dateArray.map((date, index) => (
-                                    <div key={index} className="date-item">
+                                    <div key={index} className='date-item'>
                                         <p className="booking-panel-dates">{date}</p>
                                     </div>
                                 ))}
@@ -118,7 +126,7 @@ const BookingWindow = () => {
                                                     className={`seat ${seat.status}`}
                                                     onClick={() => {
                                                         handleSeatClick(rowIndex, seatIndex);
-                                                        setSelectedSeats([...selectedSeats, { row: rowLabels[rowIndex], seat: seatIndex + 1 ,  status: seat.status }]);
+                                                        
                                                     }}></div>
                                             ))}
                                         </div>

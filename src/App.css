@@ -334,6 +334,10 @@
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
+.date-item active{
+  background-color: rgba(173, 216, 250);
+}
+
 .date-item:hover {
   background-color: rgba(173, 216, 250);
   transform: scale(1.05);
